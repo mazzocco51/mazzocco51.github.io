@@ -136,6 +136,8 @@
   .edu h3{font-size:21px;font-weight:700;letter-spacing:-0.5px;}
   .edu .meta2{color:var(--dim);font-size:12.5px;margin:3px 0 8px;}
   .edu p{font-size:12px;max-width:58ch;color:var(--dim);}
+  .edu p a{color:inherit;text-decoration:underline;text-underline-offset:2px;}
+  .edu p a:hover{color:var(--red);}
 
   .row{
     display:flex;justify-content:space-between;align-items:baseline;gap:14px;
@@ -165,8 +167,9 @@
     text-transform:uppercase;display:block;
   }
   a.c-cv .cv-xl{font-size:31px;}
-  a.c-cv .cv-arrow{font-size:34px;line-height:1;font-weight:400;align-self:flex-end;}
+  a.c-cv .cv-arrow{line-height:1;align-self:flex-end;}
   a.c-cv:hover{background:var(--red-dk);}
+  .ar{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:butt;vertical-align:middle;}
 
   /* COMPETITIONS ticker — auto-rotating band */
   .ticker{overflow:hidden;}
@@ -219,6 +222,9 @@
     .c-lang{grid-area:lang;}
     .ticker{grid-area:tick;}
     .c-gaz,.c-marco{height:200px;min-height:0;flex:none;}
+    .tick-stage{height:58px;}
+    .tick{flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;}
+    .tick .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
     .meta .links a{margin-left:0;margin-right:18px;}
   }
 </style>
@@ -267,7 +273,7 @@
           <div class="edu">
             <h3>BSc Computer &amp; Control Engineering</h3>
             <div class="meta2">Sapienza University, Rome</div>
-            <p>Thesis on Markov Chains &amp; PageRank.<br>Top-5 (of 70+) web-to-LLM pipeline for Sapienza Minerva</p>
+            <p>Thesis on Markov Chains &amp; PageRank.<br><a href="https://github.com/mazzocco51" target="_blank" rel="noopener">[Curricular projects on GitHub]</a></p>
           </div>
           <div class="edu">
             <h3>High School Diploma</h3>
@@ -278,14 +284,14 @@
           <span class="num">03</span><span class="lbl">Certifications</span>
           <div class="row"><span class="t">JPMorgan Chase <small>Quant Research Job Simulation</small></span><span class="v">2026</span></div>
           <div class="row"><span class="t">IBM <small>AI Engineering</small></span><span class="v">2026</span></div>
-          <div class="row"><span class="t"><a href="https://jump.rui.it/" target="_blank" rel="noopener">JUMP — Fondazione RUI <span class="lnk-arrow">&#8599;</span></a> <small>Soft skills &amp; interdisciplinary training</small></span><span class="v">2023–26</span></div>
+          <div class="row"><span class="t"><a href="https://jump.rui.it/" target="_blank" rel="noopener">JUMP — Fondazione RUI <span class="lnk-arrow"><svg class="ar" width="12" height="12" viewBox="0 0 24 24" style="stroke-width:3"><path d="M6 18L18 6"/><path d="M8.5 6H18V15.5"/></svg></span></a> <small>Soft skills &amp; interdisciplinary training</small></span><span class="v">2023–26</span></div>
         </div>
       </div>
 
       <div class="col col-c">
         <a class="cell c-cv" href="CV_MAZZOCCO_M.pdf" download>
           <span><span class="lbl">PDF { Updated May 2026 }</span><span class="cv-big">Download <span class="cv-xl">CV</span></span></span>
-          <span class="cv-arrow">&#8599;</span>
+          <span class="cv-arrow"><svg class="ar" width="32" height="32" viewBox="0 0 24 24"><path d="M6 18L18 6"/><path d="M8.5 6H18V15.5"/></svg></span>
         </a>
         <div class="cell c-photo c-marco">
           <img src="marco2_web.jpeg" alt="Marco Mazzocco">
