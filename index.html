@@ -199,9 +199,26 @@
 
   @media(max-width:680px){
     .bento{margin-bottom:60px;}
-    .cols{flex-direction:column;}
-    .rtop{flex-direction:column;}
-    .c-gaz,.c-marco{height:300px;flex:none;}
+    .cols{
+      display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;
+      grid-template-areas:
+        "about about"
+        "gaz   marco"
+        "edu   edu"
+        "certs certs"
+        "cv    lang"
+        "tick  tick";
+    }
+    .col-a,.rightcol,.rtop,.col-b,.col-c{display:contents;}
+    .c-about{grid-area:about;}
+    .c-gaz{grid-area:gaz;}
+    .c-marco{grid-area:marco;}
+    .c-edu{grid-area:edu;}
+    .c-certs{grid-area:certs;}
+    .c-cv{grid-area:cv;}
+    .c-lang{grid-area:lang;}
+    .ticker{grid-area:tick;}
+    .c-gaz,.c-marco{height:200px;min-height:0;flex:none;}
     .meta .links a{margin-left:0;margin-right:18px;}
   }
 </style>
