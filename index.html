@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marco Mazzocco — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1c1c1b;
+    --fg:#ededea;
+    --dim:#8a8a85;
+    --red:#e0432a;
+    --red-dk:#b8331d;
+    --line:1.5px solid #ededea;
+    --hair:1px solid #3a3a37;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;border-radius:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-family:"Space Grotesk",Arial,sans-serif;
+    font-weight:400;
+    line-height:1.45;
+    padding:0 20px;
+  }
+  .wrap{max-width:960px;margin:0 auto;}
+
+  /* TOP STRIP */
+  .top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    gap:16px;flex-wrap:wrap;
+    padding:22px 0 28px;
+    font-family:"Space Mono",monospace;
+    font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);
+  }
+  .top b{color:var(--fg);}
+
+  /* HERO */
+  .hero{margin-bottom:22px;}
+  .hero .ln{
+    display:block;font-weight:700;
+    font-size:clamp(46px,12vw,128px);
+    line-height:0.86;letter-spacing:-5px;text-transform:uppercase;
+  }
+  .hero .first{color:var(--fg);}
+  .hero .last{
+    color:transparent;-webkit-text-stroke:2px var(--fg);text-stroke:2px var(--fg);
+    margin-left:16vw;
+  }
+  .hero .dot{color:var(--red);-webkit-text-stroke:0;}
+
+  /* META */
+  .meta{
+    display:flex;justify-content:space-between;align-items:baseline;
+    gap:30px;flex-wrap:wrap;
+    padding:18px 0 22px;border-top:var(--line);
+  }
+  .meta .tag{
+    font-family:"Space Mono",monospace;
+    font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);
+  }
+  .meta .links a{
+    color:var(--fg);text-decoration:none;font-size:15px;font-weight:500;
+    margin-left:22px;
+  }
+  .meta .links a:first-child{margin-left:0;}
+  .meta .links a::before{content:"\2192 ";color:var(--red);}
+  .meta .links a:hover{color:var(--red);}
+  .meta .links a:hover::before{color:var(--fg);}
+
+  /* BENTO GRID */
+  .bento{margin:30px 0 80px;}
+  .cols{display:flex;gap:16px;align-items:stretch;}
+  .col{display:flex;flex-direction:column;gap:16px;min-width:0;}
+  .col-a{flex:30;}
+  .rightcol{flex:70;display:flex;flex-direction:column;gap:16px;min-width:0;}
+  .rtop{display:flex;gap:16px;align-items:flex-start;}
+  .col-b{flex:57;}
+  .col-c{flex:43;}
+  .cell{border:var(--line);padding:22px 22px 24px;transition:border-color .15s ease;}
+  .cell:hover{border-color:var(--red);}
+  .c-photo{transition:border-color .15s ease;}
+  .c-photo img{transition:filter .15s ease;}
+  .c-photo:hover img{filter:grayscale(1) contrast(1.18) brightness(1.05);}
+  .c-photo{position:relative;}
+  .c-photo::after{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+    background:radial-gradient(ellipse at center, rgba(0,0,0,0) 42%, rgba(0,0,0,0.7) 100%);
+    opacity:0;transition:opacity .25s ease;
+  }
+  .c-photo:hover::after{opacity:1;}
+  .c-photo .cap{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;pointer-events:none;
+    padding:14px 14px 12px;
+    font-family:"Space Mono",monospace;font-size:11px;line-height:1.35;
+    letter-spacing:1px;text-transform:uppercase;color:#fff;
+    background:linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+    opacity:0;transform:translateY(8px);
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .c-photo:hover .cap{opacity:1;transform:translateY(0);}
+  /* hierarchy by size — Education is the hero tile */
+  .c-edu{grid-area:edu;}
+  .c-about{grid-area:about;}
+  .c-cv{grid-area:cv;}
+  .c-certs{grid-area:certs;}
+  .c-lang{grid-area:lang;}
+  .c-photo{padding:0;overflow:hidden;background:#0e0e0d;}
+  .c-gaz{flex:1 1 auto;min-height:340px;}
+  .c-marco{height:300px;}
+  .c-photo img{
+    width:100%;height:100%;
+    object-fit:cover;display:block;
+    filter:grayscale(1) contrast(1.05);
+  }
+  .c-marco img{object-position:40% 55%;}
+  .c-gaz img{object-position:50% 45%;}
+
+  .num{
+    font-family:"Space Mono",monospace;font-size:12px;color:var(--red);font-weight:700;
+    display:block;margin-bottom:4px;
+  }
+  .lbl{
+    font-family:"Space Mono",monospace;
+    font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--dim);
+    display:block;margin-bottom:16px;
+  }
+
+  .c-about p{font-size:19px;max-width:42ch;}
+  .c-about p .accent{color:var(--red);font-weight:500;}
+
+  .edu{margin-bottom:18px;}
+  .edu:last-child{margin-bottom:0;}
+  .edu h3{font-size:21px;font-weight:700;letter-spacing:-0.5px;}
+  .edu .meta2{color:var(--dim);font-size:12.5px;margin:3px 0 8px;}
+  .edu p{font-size:12px;max-width:58ch;color:var(--dim);}
+
+  .row{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    padding:11px 0;flex-wrap:wrap;border-bottom:var(--hair);
+  }
+  .row:last-child{border-bottom:none;}
+  .row .t{font-size:16px;font-weight:500;}
+  .row .t small{display:block;color:var(--dim);font-size:12px;font-weight:400;margin-top:1px;}
+  .row .v{
+    font-family:"Space Mono",monospace;font-size:11px;letter-spacing:1px;
+    text-transform:uppercase;color:var(--dim);white-space:nowrap;
+  }
+  .row .v.hot{color:var(--red);}
+  .row a{color:inherit;text-decoration:none;border-bottom:1px solid transparent;}
+  .row a:hover{border-bottom-color:var(--red);}
+  .row a .lnk-arrow{color:var(--red);font-size:0.85em;border-bottom:0;}
+
+  /* CV cell — compact highlight */
+  a.c-cv{
+    background:var(--red);color:#fff;text-decoration:none;
+    display:flex;flex-direction:column;justify-content:space-between;gap:14px;
+    min-height:120px;
+  }
+  a.c-cv .lbl{color:#ffd9d2;margin-bottom:3px;}
+  a.c-cv .cv-big{
+    font-size:24px;font-weight:700;line-height:0.95;letter-spacing:-1px;
+    text-transform:uppercase;display:block;
+  }
+  a.c-cv .cv-xl{font-size:31px;}
+  a.c-cv .cv-arrow{font-size:34px;line-height:1;font-weight:400;align-self:flex-end;}
+  a.c-cv:hover{background:var(--red-dk);}
+
+  /* COMPETITIONS ticker — auto-rotating band */
+  .ticker{overflow:hidden;}
+  .ticker .num{display:inline;}
+  .tick-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+  .tick-head .lbl{margin-bottom:0;}
+  .tick-stage{position:relative;height:46px;}
+  .tick{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    opacity:0;transform:translateX(55px);
+    transition:opacity .6s ease, transform .6s ease;
+    pointer-events:none;
+  }
+  .tick.on{opacity:1;transform:translateX(0);pointer-events:auto;}
+  .tick .name{font-size:clamp(17px,2.3vw,24px);font-weight:500;letter-spacing:-0.5px;line-height:1;white-space:nowrap;}
+  .tick .right{display:flex;align-items:baseline;gap:14px;white-space:nowrap;}
+  .tick .res{font-family:"Space Mono",monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--red);}
+  .tick .yr{font-family:"Space Mono",monospace;font-size:12px;color:var(--dim);}
+  .tick-bar{height:3px;background:#3a3a37;margin-top:14px;position:relative;overflow:hidden;}
+  .tick-bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--red);}
+  .tick-bar i.run{width:100%;transition:width 5s linear;}
+
+  .foot{
+    border-top:var(--line);padding:24px 0 70px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-family:"Space Mono",monospace;font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--dim);
+  }
+
+  @media(max-width:680px){
+    .bento{margin-bottom:60px;}
+    .cols{flex-direction:column;}
+    .rtop{flex-direction:column;}
+    .c-gaz,.c-marco{height:300px;flex:none;}
+    .meta .links a{margin-left:0;margin-right:18px;}
+    .hero .last{margin-left:6vw;}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <div class="top">
+    <span><b>MARCO MAZZOCCO</b> / PORTFOLIO</span>
+    <span>ROME · IT &nbsp;—&nbsp; 41.9°N 12.5°E</span>
+  </div>
+
+  <header class="hero">
+    <span class="ln first">Marco</span>
+    <span class="ln last">Mazzocco<span class="dot">.</span></span>
+  </header>
+
+  <section class="meta">
+    <div class="tag">CS &amp; CONTROL ENGINEERING — SAPIENZA, ROME &nbsp;/&nbsp; INTERESTS: AI / ML / QUANT</div>
+    <div class="links">
+      <a href="mailto:mazzocco.dev@gmail.com">Email</a>
+      <a href="https://github.com/mazzocco51" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/marco-mazzocco-6658b43b1" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <section class="bento">
+
+    <div class="cols">
+
+      <div class="col col-a">
+        <div class="cell c-about">
+          <span class="num">01</span><span class="lbl">About</span>
+          <p>CS &amp; Control Engineering student focused on scalable AI/ML systems. Applied machine learning, quantitative methods, and High Performance Computing (HPC).<br><span class="accent">Things that ship.</span></p>
+        </div>
+        <div class="cell c-photo c-gaz">
+          <img src="gaz_web.jpeg" alt="Industrial structure">
+          <span class="cap">CODEMOTION HackNation location<br>Rome, March 28th 2026</span>
+        </div>
+      </div>
+
+      <div class="rightcol">
+      <div class="rtop">
+      <div class="col col-b">
+        <div class="cell c-edu">
+          <span class="num">02</span><span class="lbl">Education</span>
+          <div class="edu">
+            <h3>BSc Computer &amp; Control Engineering</h3>
+            <div class="meta2">Sapienza University, Rome</div>
+            <p>Thesis on Markov Chains &amp; PageRank.<br>Top-5 (of 70+) web-to-LLM pipeline for Sapienza Minerva</p>
+          </div>
+          <div class="edu">
+            <h3>High School Diploma</h3>
+            <div class="meta2">100/100 cum Laude · Math Olympiad national finalist</div>
+          </div>
+        </div>
+        <div class="cell c-certs">
+          <span class="num">03</span><span class="lbl">Certifications</span>
+          <div class="row"><span class="t">JPMorgan Chase <small>Quant Research Job Simulation</small></span><span class="v">2026</span></div>
+          <div class="row"><span class="t">IBM <small>AI Engineering</small></span><span class="v">2026</span></div>
+          <div class="row"><span class="t"><a href="https://jump.rui.it/" target="_blank" rel="noopener">JUMP — Fondazione RUI <span class="lnk-arrow">&#8599;</span></a> <small>Soft skills &amp; interdisciplinary training</small></span><span class="v">2023–26</span></div>
+        </div>
+      </div>
+
+      <div class="col col-c">
+        <a class="cell c-cv" href="CV_MAZZOCCO_M.pdf" download>
+          <span><span class="lbl">PDF { Updated May 2026 }</span><span class="cv-big">Download <span class="cv-xl">CV</span></span></span>
+          <span class="cv-arrow">&#8599;</span>
+        </a>
+        <div class="cell c-photo c-marco">
+          <img src="marco2_web.jpeg" alt="Marco Mazzocco">
+          <span class="cap">CODEMOTION HackNation start<br>Rome, March 28th 2026</span>
+        </div>
+        <div class="cell c-lang">
+          <span class="num">04</span><span class="lbl">Languages</span>
+          <div class="row"><span class="t">English</span><span class="v">C1 Cambridge</span></div>
+        </div>
+      </div>
+      </div>
+
+      <section class="cell ticker">
+        <div class="tick-head">
+          <span class="num">05</span><span class="lbl">Competitions</span>
+        </div>
+        <div class="tick-stage" id="tickStage">
+          <div class="tick on"><span class="name">REPLY AI Agent Challenge</span><span class="right"><span class="res">Top 5%</span><span class="yr">April 2026</span></span></div>
+          <div class="tick"><span class="name">CODEMOTION Hack Nation</span><span class="right"><span class="yr">March 2026</span></span></div>
+          <div class="tick"><span class="name">NTT DATA ikigAI</span><span class="right"><span class="yr">May 2026</span></span></div>
+          <div class="tick"><span class="name">REPLY Student Tech Clash</span><span class="right"><span class="yr">November 2023 / 24 / 25</span></span></div>
+        </div>
+        <div class="tick-bar"><i id="tickBar"></i></div>
+      </section>
+
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="foot">
+    <span>Last updated: June 2026</span>
+    <span>From Molise, with code</span>
+  </footer>
+
+</main>
+<script>
+(function(){
+  var ticks=[].slice.call(document.querySelectorAll('#tickStage .tick'));
+  var bar=document.getElementById('tickBar');
+  if(!ticks.length) return;
+  var i=0, n=ticks.length, DUR=5000;
+  function runBar(){ bar.classList.remove('run'); bar.style.width='0'; void bar.offsetWidth; bar.classList.add('run'); }
+  function show(k){
+    ticks[i].classList.remove('on');
+    i=k;
+    ticks[i].classList.add('on');
+    runBar();
+  }
+  runBar();
+  setInterval(function(){ show((i+1)%n); }, DUR);
+})();
+</script>
+</body>
+</html>
