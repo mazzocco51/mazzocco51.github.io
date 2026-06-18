@@ -26,6 +26,9 @@
     font-weight:400;
     line-height:1.45;
     padding:0 20px;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    -webkit-tap-highlight-color:transparent;
   }
   .wrap{max-width:960px;margin:0 auto;}
 
@@ -71,7 +74,7 @@
   .meta .links a:hover::before{color:var(--fg);}
 
   /* BENTO GRID */
-  .bento{margin:30px 0 80px;}
+  .bento{margin:30px 0 16px;}
   .cols{display:flex;gap:16px;align-items:stretch;}
   .col{display:flex;flex-direction:column;gap:16px;min-width:0;}
   .col-a{flex:30;}
@@ -193,6 +196,17 @@
   .tick-bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--red);}
   .tick-bar i.run{width:100%;transition:width 5s linear;}
 
+  /* NOW WORKING ON — full-width tile */
+  .workon{position:relative;overflow:hidden;display:block;text-decoration:none;color:var(--fg);margin:16px 0 32px;min-height:230px;}
+  .workon .wo-img{position:absolute;top:50%;right:0;transform:translateY(-50%);height:96%;width:auto;max-width:60%;object-fit:cover;object-position:center;z-index:0;pointer-events:none;}
+  .workon .wo-text{position:relative;z-index:1;max-width:58%;}
+  .workon h3{font-size:23px;font-weight:700;letter-spacing:-0.5px;margin-top:2px;}
+  .workon .wo-code{font-family:"Space Mono",monospace;font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+  .workon p{font-size:14px;color:var(--dim);max-width:46ch;margin-top:8px;}
+  .workon .wo-stack{font-family:"Space Mono",monospace;font-size:12px;color:var(--fg);text-transform:uppercase;letter-spacing:1px;margin-top:12px;}
+  .workon .wo-link{display:inline-flex;align-items:center;gap:6px;color:var(--red);font-family:"Space Mono",monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-top:14px;}
+  .workon:hover .wo-link{color:var(--fg);}
+
   .foot{
     border-top:var(--line);padding:24px 0 70px;
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
@@ -201,7 +215,7 @@
   }
 
   @media(max-width:680px){
-    .bento{margin-bottom:60px;}
+    .bento{margin-bottom:16px;}
     .cols{
       display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;
       grid-template-areas:
@@ -225,6 +239,8 @@
     .tick-stage{height:58px;}
     .tick{flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;}
     .tick .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
+    .workon .wo-img{width:100%;max-width:100%;height:100%;top:0;transform:none;opacity:.32;object-position:center;}
+    .workon .wo-text{max-width:100%;}
     .meta .links a{margin-left:0;margin-right:18px;}
   }
 </style>
@@ -321,6 +337,18 @@
     </div>
 
   </section>
+
+  <a class="cell workon" href="https://github.com/mazzocco51/WC2026-edge-engine" target="_blank" rel="noopener">
+    <img class="wo-img" src="workon.png" alt="">
+    <div class="wo-text">
+      <span class="num">06</span><span class="lbl">Now Working On</span>
+      <h3>Who'll win the World Cup?</h3>
+      <div class="wo-code">WC2026 Edge Engine</div>
+      <p>Monte Carlo + Poisson model vs. Polymarket odds to find +EV edges on the 2026 World Cup.</p>
+      <div class="wo-stack">[ FastAPI · Streamlit · Docker ]</div>
+      <span class="wo-link">View on GitHub <svg class="ar" width="13" height="13" viewBox="0 0 24 24" style="stroke-width:3"><path d="M6 18L18 6"/><path d="M8.5 6H18V15.5"/></svg></span>
+    </div>
+  </a>
 
   <footer class="foot">
     <span>Last updated: June 2026</span>
