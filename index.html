@@ -239,7 +239,8 @@
     .tick-stage{height:58px;}
     .tick{flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;}
     .tick .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
-    .workon .wo-img{width:100%;max-width:100%;height:100%;top:0;transform:none;opacity:.32;object-position:center;}
+    .workon{min-height:0;}
+    .workon .wo-img{display:none;}
     .workon .wo-text{max-width:100%;}
     .meta .links a{margin-left:0;margin-right:18px;}
   }
@@ -344,7 +345,7 @@
       <span class="num">06</span><span class="lbl">Now Working On</span>
       <h3>Who'll win the World Cup?</h3>
       <div class="wo-code">WC2026 Edge Engine</div>
-      <p>Monte Carlo + Poisson model vs. Polymarket odds to find +EV edges on the 2026 World Cup.</p>
+      <p>Predicting the 2026 World Cup winner with a Monte Carlo + Poisson model, benchmarked against Polymarket odds to surface +EV edges.</p>
       <div class="wo-stack">[ FastAPI · Streamlit · Docker ]</div>
       <span class="wo-link">View on GitHub <svg class="ar" width="13" height="13" viewBox="0 0 24 24" style="stroke-width:3"><path d="M6 18L18 6"/><path d="M8.5 6H18V15.5"/></svg></span>
     </div>
