@@ -363,6 +363,60 @@
     .tick .right .yr{grid-column:1;grid-row:2;text-align:left;}
     .tick .right .res{grid-row:3;}
   }
+  /* Printed labels sit across the frame rather than float above the art. */
+  .projects .proj .project-mark{position:relative;padding:28px 12px 14px;border-color:#b8baba;}
+  .projects .project-mark-name{position:absolute;top:0;left:10px;right:10px;
+    transform:translateY(-50%);margin:0;padding:3px 7px;background:var(--bg);
+    font-family:"Space Mono",monospace;font-size:11px;font-weight:700;
+    line-height:1.55;letter-spacing:0;text-align:center;text-wrap:balance;}
+  .projects .project-mark-name::before{content:none;}
+  .projects .proj .project-mark::after{content:"";position:absolute;bottom:5px;left:5px;right:5px;
+    border-bottom:1px dotted #b8baba;}
+  @media(max-width:760px){
+    .projects .proj .project-mark{padding-top:26px;}
+    .projects .project-mark-name{font-size:11px;}
+  }
+  .projects .proj .project-mark{border:2px solid #7e7e79;}
+  .project-code-symbol{color:var(--ink);font-size:13px;font-weight:700;white-space:nowrap;}
+  .project-code-symbol>span{color:var(--red);}
+  .projects .project-mark-name{left:3px;right:3px;padding:3px 2px;font-size:10px;letter-spacing:-.25px;white-space:nowrap;text-wrap:nowrap;}
+  .project-title-slash{color:var(--red);}
+  @media(max-width:760px){.projects .project-mark-name{font-size:9px;}}
+
+  /* Mobile: paired degree stamps and project title rows. */
+  @media(max-width:760px){
+    .meta .tag{display:none;}
+    .meta{margin-top:14px;}
+    .edu .degree-entry{grid-template-columns:104px minmax(0,1fr);gap:16px;align-items:stretch;}
+    .edu .degree-entry .university-stamp{width:104px;height:100%;min-height:150px;align-self:stretch;}
+    .edu .degree-entry .university-logo{width:80px;height:104px;}
+    .edu .degree-details .degree{font-size:26px;}
+    .edu .degree-details .degree-name{font-size:16px;line-height:1.35;}
+    .edu .degree-university{display:block;margin-top:5px;}
+    .edu .degree-details .m2{font-size:12px;line-height:1.5;margin-top:7px;}
+    .edu .degree-details .p{font-size:12px;line-height:1.5;margin-top:7px;}
+    .projects>.proj:has(.project-mark){display:grid;grid-template-columns:156px minmax(0,1fr);gap:16px;align-items:center;}
+    .projects .proj>div:not(.shot){display:contents;}
+    .projects .proj .project-mark{grid-column:1;grid-row:1;width:156px;align-self:center;padding:22px 8px 10px;}
+    .projects .proj .project-mark .glass{height:108px;}
+    .projects .project-mark-name{font-size:7.8px;left:2px;right:2px;letter-spacing:-.3px;padding-inline:1px;}
+    .projects .proj h3{grid-column:2;grid-row:1;font-size:19px;line-height:1.3;margin:0;overflow-wrap:normal;}
+    .projects .proj .code,.projects .proj p,.projects .proj .stack,.projects .proj .link{grid-column:1 / -1;}
+    .projects .proj .code{margin:0;}
+    .projects .proj p{text-align:left;margin:0;line-height:1.65;}
+    .projects .proj .stack,.projects .proj .link{margin:0;}
+    .projects>.proj+.proj{margin-top:36px;}
+  }
+  @media(max-width:360px){
+    .edu .degree-entry{grid-template-columns:92px minmax(0,1fr);gap:12px;}
+    .edu .degree-entry .university-stamp{width:92px;min-height:150px;height:100%;}
+    .edu .degree-entry .university-logo{width:70px;height:92px;}
+    .projects>.proj:has(.project-mark){grid-template-columns:144px minmax(0,1fr);gap:12px;}
+    .projects .proj .project-mark{width:144px;}
+    .projects .project-mark-name{font-size:7.3px;}
+    .projects .proj h3{font-size:19px;}
+  }
+  @media(max-width:760px){.projects .proj .code{display:none;}}
 </style>
 </head>
 <body>
@@ -401,9 +455,9 @@
 
     <div class="edu">
       <div class="head"><span class="num">02</span><span class="lbl">Education</span></div>
-      <div class="degree-entry"><span class="university-stamp"><img class="university-logo" src="polimi-ink.webp" loading="lazy" decoding="async" alt="Politecnico di Milano emblem"></span><div class="degree-details"><h3 class="degree-title"><span class="degree">MSc</span><span class="degree-name">High Performance Computing Engineering <span class="university-at">@</span> Politecnico di Milano</span></h3><div class="m2">2026–present</div></div></div>
+      <div class="degree-entry"><span class="university-stamp"><img class="university-logo" src="polimi-ink.webp" loading="lazy" decoding="async" alt="Politecnico di Milano emblem"></span><div class="degree-details"><h3 class="degree-title"><span class="degree">MSc</span><span class="degree-name">High Performance Computing Engineering <span class="degree-university"><span class="university-at">@</span> Politecnico di Milano</span></span></h3><div class="m2">2026–present</div></div></div>
 
-      <div class="degree-entry"><span class="university-stamp"><img class="university-logo" src="sapienza-ink.webp" loading="lazy" decoding="async" alt="Sapienza University of Rome emblem"></span><div class="degree-details"><h3 class="degree-title"><span class="degree">BSc</span><span class="degree-name">Computer and Control Engineering <span class="university-at">@</span> Sapienza, Rome</span></h3><div class="m2">2023–2026 · 110/110 cum laude</div>
+      <div class="degree-entry"><span class="university-stamp"><img class="university-logo" src="sapienza-ink.webp" loading="lazy" decoding="async" alt="Sapienza University of Rome emblem"></span><div class="degree-details"><h3 class="degree-title"><span class="degree">BSc</span><span class="degree-name">Computer and Control Engineering <span class="degree-university"><span class="university-at">@</span> Sapienza, Rome</span></span></h3><div class="m2">2023–2026 · 110/110 cum laude</div>
       <div class="p">Thesis: <a href="https://github.com/mazzocco51/pagerank-thesis" target="_blank" rel="noopener">PageRank: Markov chains and Gpu computing</a></div></div></div>
       <h3>High School Diploma <span class="university-at">@</span> IISS Patini-Liberatore</h3>
       <div class="m2">100/100 cum Laude · Math Olympiad national finalist</div>
@@ -412,7 +466,7 @@
     <section class="projects" aria-labelledby="projects-title">
       <div class="head" id="projects-title"><span class="num">03</span><span class="lbl">Projects</span></div>
   <a class="proj" href="https://github.com/mazzocco51/pagerank-thesis" target="_blank" rel="noopener">
-    <div class="shot project-mark"><div class="project-mark-name">PageRank</div><div class="glass"><img src="pagerank-plate.webp" loading="lazy" decoding="async" alt="GPU chip connected to random walkers, one highlighted in orange"></div></div>
+    <div class="shot project-mark"><div class="project-mark-name">&lt;<span class="project-title-slash">\</span>Google’s PageRank&gt;</div><div class="glass"><img src="pagerank-plate.webp" loading="lazy" decoding="async" alt="GPU chip connected to random walkers, one highlighted in orange"></div></div>
     <div>
 <h3>PageRank at GPU scale</h3>
       <div class="code">Markov Chains &amp; GPU Computing</div>
@@ -423,7 +477,7 @@
   </a>
 
   <a class="proj" href="https://github.com/mazzocco51/WC2026-edge-engine" target="_blank" rel="noopener">
-    <div class="shot project-mark"><div class="project-mark-name">WC2026 Edge Engine</div><div class="glass"><img src="football-plate.webp" loading="lazy" decoding="async" alt="Football player and ball with orange captain armband"></div><span class="led"></span></div>
+    <div class="shot project-mark"><div class="project-mark-name">&lt;<span class="project-title-slash">\</span>WC2026 Edge Engine&gt;</div><div class="glass"><img src="football-plate.webp" loading="lazy" decoding="async" alt="Football player and ball with orange captain armband"></div><span class="led"></span></div>
     <div>
 <h3>Simulating the 2026 World Cup</h3>
       
@@ -434,7 +488,7 @@
   </a>
 
   <a class="proj" href="https://github.com/mazzocco51/trading-ai-multiagent" target="_blank" rel="noopener">
-    <div class="shot project-mark"><div class="project-mark-name">Trading AI Multi-Agent</div><div class="glass"><img src="trading-plate.webp" loading="lazy" decoding="async" alt="Five agents around a table with orange ties"></div><span class="led"></span></div>
+    <div class="shot project-mark"><div class="project-mark-name">&lt;<span class="project-title-slash">\</span>Trading AI Multi-Agent&gt;</div><div class="glass"><img src="trading-plate.webp" loading="lazy" decoding="async" alt="Five agents around a table with orange ties"></div><span class="led"></span></div>
     <div>
 <h3>Multi-agent AI for crypto trading</h3>
       
