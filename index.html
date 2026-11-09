@@ -478,6 +478,198 @@
     .projects .proj .project-actions{margin-top:0;gap:0 10px;align-items:baseline;}
     .projects .project-actions .link{font-size:13px;min-height:0;line-height:1.6;}
   }
+  .jump-photo{position:relative;max-width:320px;margin:12px 0 6px 10px;padding:8px 8px 10px;background:#dcdedf;}
+  .jump-photo::before{content:"";position:absolute;width:46px;height:14px;top:-5px;right:18px;transform:rotate(7deg);background:rgba(173,178,179,.55);pointer-events:none;}
+  .jump-photo a{display:block;border:1px solid var(--hair);}
+  .jump-photo img{display:block;width:100%;height:auto;}
+  .jump-photo figcaption{font-family:"Space Mono",monospace;font-size:10px;line-height:1.7;color:#62635f;margin-top:8px;}
+  @media(max-width:760px){.jump-photo{max-width:340px;margin-left:0;margin-top:14px;}}
+  /* A small staple holds the printed photograph at its upper-left edge. */
+  .jump-photo::after{
+    content:"";position:absolute;z-index:2;left:17px;top:3px;
+    width:25px;height:5px;border:1px solid #747b7e;border-top-color:#a9afb1;
+    border-radius:1px;background:#c7ccce;transform:rotate(-7deg);
+    box-shadow:0 1px 1px rgba(21,21,19,.18);pointer-events:none;
+  }
+  .jump-photo::after{display:none;}
+  .photo-paperclip{
+    position:absolute;z-index:3;left:15px;top:-14px;width:15px;height:43px;
+    border:2px solid #858e93;border-radius:9px;background:transparent;
+    transform:rotate(-15deg);box-shadow:1px 1px 1px rgba(21,21,19,.12);pointer-events:none;
+  }
+  .photo-paperclip::before{
+    content:"";position:absolute;left:3px;top:5px;width:7px;height:29px;
+    border:2px solid #a5adb1;border-top:0;border-radius:0 0 6px 6px;
+  }
+  /* Postcard print with one piece of tape. */
+  .jump-photo{max-width:440px;margin-left:0;padding:12px 12px 16px;background:#dedfe0;border:1px solid #c9cccd;}
+  .jump-photo a{border:0;}
+  .jump-photo figcaption{margin-top:12px;font-size:11px;line-height:1.65;color:var(--ink);}
+  .postcard-title{display:block;font-weight:700;margin-bottom:4px;}
+  .postcard-note{display:block;color:#62635f;}
+  @media(max-width:760px){.jump-photo{max-width:100%;padding:10px 10px 14px;}.jump-photo figcaption{font-size:10px;}}
+  .postcards{grid-area:postcards;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;align-items:start;}
+  .postcards .jump-photo{width:100%;max-width:none;margin:0;}
+  .postcards .jump-photo img{aspect-ratio:4 / 3;object-fit:cover;}
+  .postcards .jump-photo figcaption{min-height:88px;}
+  .bento>.lang::before{bottom:0;}
+  @media(min-width:761px){
+    .bento{grid-template-areas:"about about about about cv cv" "edu edu edu edu edu edu" "projects projects projects projects projects projects" "certs certs certs lang lang lang" "postcards postcards postcards postcards postcards postcards" "tick tick tick tick tick tick";}
+  }
+  @media(max-width:760px){
+    .bento{grid-template-areas:"about" "cv" "edu" "projects" "certs" "lang" "postcards" "tick";}
+    .postcards{grid-template-columns:minmax(0,1fr);gap:28px;}
+    .postcards .jump-photo figcaption{min-height:0;}
+  }
+  /* Discreet photo prints; tonal treatment is CSS-only. */
+  .postcards{grid-template-columns:repeat(2,minmax(0,290px));justify-content:center;gap:36px;}
+  .postcards .jump-photo{padding:8px 8px 11px;background:#dedfe0;}
+  .postcards .jump-photo img{filter:grayscale(1) contrast(.9) brightness(1.04);}
+  .postcards .jump-photo figcaption{min-height:0;margin-top:8px;font-size:9px;line-height:1.65;}
+  .postcards .postcard-title{margin-bottom:3px;}
+  .postcards .jump-photo::before{width:34px;height:11px;right:14px;}
+  @media(max-width:760px){
+    .postcards{grid-template-columns:minmax(0,290px);justify-content:center;gap:24px;}
+    .postcards .jump-photo figcaption{font-size:10px;}
+  }
+  /* Balanced lower bento: certifications/photo left, languages/events right. */
+  .background-right{grid-area:background-right;min-width:0;position:relative;border-top:1px solid var(--dim);padding-top:28px;}
+  .background-right::before{content:"";position:absolute;left:-24px;top:28px;bottom:0;width:1px;background:var(--hair);}
+  .background-right .lang{border:0;padding:0;}
+  .background-right .tick-wrap{border-top:1px solid var(--dim);margin-top:26px;padding-top:24px;}
+  .background-right .tick{grid-template-columns:minmax(0,1fr);gap:5px;padding:12px 0;}
+  .background-right .tick .right{grid-template-columns:58px minmax(0,1fr) auto;gap:10px;white-space:normal;}
+  .background-right .tick .event-place,.background-right .tick .yr,.background-right .tick .res{font-size:10px;line-height:1.6;}
+  .background-right .tick .name{font-size:15px;}
+  .certs .jump-photo{width:100%;max-width:320px;margin:18px 0 0;padding:8px 8px 11px;}
+  .certs .jump-photo img{filter:none;aspect-ratio:4 / 3;object-fit:cover;}
+  .certs .jump-photo figcaption{font-size:10px;line-height:1.65;margin-top:8px;}
+  @media(min-width:761px){
+    .bento{grid-template-areas:"about about about about cv cv" "edu edu edu edu edu edu" "projects projects projects projects projects projects" "certs certs certs background-right background-right background-right";}
+  }
+  @media(max-width:760px){
+    .bento{grid-template-areas:"about" "cv" "edu" "projects" "certs" "lang" "tick";}
+    .background-right{display:contents;}
+    .background-right::before{display:none;}
+    .background-right .lang{border-top:1px solid var(--dim);padding-top:28px;}
+    .background-right .tick-wrap{margin-top:0;padding-top:28px;}
+    .background-right .tick .right{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;padding-left:10px;}
+    .background-right .tick .event-place{grid-column:1;grid-row:1;}
+    .background-right .tick .yr{grid-column:2;grid-row:1;}
+    .background-right .tick .res{grid-column:1 / -1;grid-row:2;}
+  }
+  @media(max-width:360px){
+    .background-right .tick .right{grid-template-columns:minmax(0,1fr);}
+    .background-right .tick .yr{grid-column:1;grid-row:2;text-align:left;}
+    .background-right .tick .res{grid-row:3;}
+  }
+  /* Event location and date share a row with clearer hierarchy. */
+  .background-right .tick .right{grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;padding-left:10px;}
+  .background-right .tick .event-place{grid-column:1;grid-row:1;color:#555650;font-weight:700;}
+  .background-right .tick .right .yr{grid-column:2;grid-row:1;text-align:right;}
+  .background-right .tick .right .res{grid-column:1 / -1;grid-row:2;}
+  .background-right .tick{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;}
+  .background-right .tick .name{flex:1 1 auto;}
+  .background-right .tick .right{display:flex;flex:0 0 auto;flex-wrap:wrap;align-items:baseline;gap:6px 12px;padding-left:0;}
+  .background-right .tick .event-place,.background-right .tick .yr{white-space:nowrap;}
+  .background-right .tick .res{order:3;}
+  .background-right .tick .res{order:0;}
+  .caption-symbol{color:var(--red);}
+  .certs .jump-photo{max-width:370px;}
+  .certs .jump-photo .postcard-person{white-space:nowrap;font-size:9px;letter-spacing:-.3px;line-height:1.8;}
+  @media(max-width:400px){.certs .jump-photo .postcard-person{font-size:8px;letter-spacing:-.35px;}}
+  @media(max-width:340px){.certs .jump-photo .postcard-person{font-size:7.2px;letter-spacing:-.35px;}}
+  /* Wider caption paper, with the existing photo size preserved. */
+  .certs .jump-photo{max-width:100%;padding:12px 14px 15px;}
+  .certs .jump-photo>a{max-width:352px;margin-inline:auto;}
+  .certs .jump-photo figcaption{margin-top:12px;}
+  .certs .jump-photo .postcard-person{font-size:clamp(9px,1.04vw,15px);letter-spacing:-.25px;line-height:1.9;}
+  .certs .jump-photo .postcard-title{font-size:11px;}
+  @media(max-width:760px){
+    .certs .jump-photo>a{max-width:352px;}
+    .certs .jump-photo{padding-inline:10px;}
+    .certs .jump-photo .postcard-person{font-size:clamp(8px,1.95vw,12px);letter-spacing:-.3px;}
+  }
+  @media(min-width:761px) and (max-width:1000px){
+    .certs .jump-photo{padding-inline:8px;}
+    .certs .jump-photo .postcard-person{font-size:8.6px;letter-spacing:-.35px;}
+  }
+  /* Postcard edge and full-width typography. */
+  .certs .jump-photo{container-type:inline-size;border:1px solid #a5a8a9;
+    background:#e0e1e2;padding:14px 14px 18px;
+    outline:1px solid #c7cacb;outline-offset:-5px;}
+  .certs .jump-photo>a{margin-left:0;margin-right:auto;}
+  .certs .jump-photo figcaption{margin-top:14px;}
+  .certs .jump-photo .postcard-person{font-size:calc(100cqw / 30.5);letter-spacing:0;line-height:1.8;white-space:nowrap;}
+  .certs .jump-photo .postcard-title{font-size:12px;margin-bottom:6px;}
+  @media(max-width:760px){
+    .certs .jump-photo{padding:12px 12px 16px;}
+    .certs .jump-photo .postcard-person{font-size:calc(100cqw / 30.5);letter-spacing:0;}
+  }
+  /* Match education typography, with a clearer postcard heading. */
+  .certs .jump-photo figcaption{font-family:"Space Grotesk",Arial,sans-serif;}
+  .certs .jump-photo .postcard-person{font-size:14px;letter-spacing:0;line-height:1.65;}
+  .certs .jump-photo .postcard-title{font-family:"Space Grotesk",Arial,sans-serif;font-size:18px;font-weight:700;line-height:1.35;margin-bottom:8px;}
+  @media(min-width:761px) and (max-width:1000px){
+    .certs .jump-photo .postcard-person{font-size:10px;}
+    .certs .jump-photo .postcard-title{font-size:16px;}
+  }
+  @media(max-width:760px){
+    .certs .jump-photo .postcard-person{font-size:clamp(10px,2.75vw,14px);}
+    .certs .jump-photo .postcard-title{font-size:17px;}
+  }
+  /* Trim unused postcard paper and align the closing note right. */
+  .certs .jump-photo{width:fit-content;max-width:100%;}
+  .certs .jump-photo>a{width:352px;max-width:100%;}
+  .foot{align-items:flex-end;text-align:right;}
+  @media(max-width:760px){
+    .certs .jump-photo{width:100%;max-width:382px;}
+    .certs .jump-photo>a{width:100%;max-width:352px;}
+  }
+  /* Explicit sizing avoids shrink-to-fit collapse with containment. */
+  .certs .jump-photo{container-type:normal;box-sizing:border-box;width:382px;max-width:100%;}
+  .certs .jump-photo>a{width:352px;max-width:100%;margin-left:0;margin-right:auto;}
+  .certs .jump-photo figcaption{width:100%;min-width:0;}
+  @media(max-width:760px){
+    .certs .jump-photo{width:382px;max-width:100%;}
+    .certs .jump-photo>a{width:100%;}
+  }
+  /* University stamps extend beyond the complete adjacent description. */
+  .edu .degree-entry{grid-template-columns:120px minmax(0,1fr);gap:24px;align-items:stretch;padding-bottom:16px;}
+  .edu .degree-entry .university-stamp{width:120px;height:calc(100% + 16px);min-height:156px;align-self:stretch;}
+  .edu .degree-entry .university-logo{width:92px;height:120px;}
+  @media(max-width:760px){
+    .edu .degree-entry{grid-template-columns:112px minmax(0,1fr);gap:16px;padding-bottom:16px;align-items:stretch;}
+    .edu .degree-entry .university-stamp{width:112px;height:calc(100% + 16px);min-height:170px;}
+    .edu .degree-entry .university-logo{width:86px;height:116px;}
+    .projects>.proj:has(.project-mark){display:block;}
+    .projects .proj .project-mark{display:none;}
+    .projects .proj>div:not(.shot){display:block;}
+    .projects .proj h3{font-size:23px;line-height:1.3;margin:0 0 10px;}
+    .projects .proj p{font-size:15px;line-height:1.65;}
+    .projects .proj .project-actions{display:flex;flex-wrap:wrap;margin-top:0;gap:0 12px;}
+  }
+  @media(max-width:360px){
+    .edu .degree-entry{grid-template-columns:100px minmax(0,1fr);gap:12px;}
+    .edu .degree-entry .university-stamp{width:100px;min-height:174px;}
+    .edu .degree-entry .university-logo{width:76px;height:104px;}
+  }
+  /* Compact stamp proportions; descriptions centered inside their height. */
+  .edu .degree-entry{grid-template-columns:110px minmax(0,1fr);gap:24px;align-items:center;padding-bottom:0;}
+  .edu .degree-entry .university-stamp{width:110px;height:100%;min-height:136px;align-self:stretch;}
+  .edu .degree-entry .university-logo{width:84px;height:108px;}
+  .edu .degree-details{align-self:center;padding-block:12px;}
+  @media(max-width:760px){
+    .edu .degree-entry{grid-template-columns:100px minmax(0,1fr);gap:16px;align-items:center;padding-bottom:0;}
+    .edu .degree-entry .university-stamp{width:100px;height:100%;min-height:136px;}
+    .edu .degree-entry .university-logo{width:76px;height:100px;}
+    .edu .degree-details{padding-block:12px;}
+  }
+  @media(max-width:360px){
+    .edu .degree-entry{grid-template-columns:88px minmax(0,1fr);gap:12px;}
+    .edu .degree-entry .university-stamp{width:88px;min-height:124px;}
+    .edu .degree-entry .university-logo{width:66px;height:88px;}
+  }
 </style>
 </head>
 <body>
@@ -562,13 +754,23 @@
       <div class="row"><span class="t">JPMorgan Chase <small>Quant Research Job Simulation</small></span><span class="v">2026</span></div>
       <div class="row"><span class="t">IBM <small>AI Engineering</small></span><span class="v">2026</span></div>
       <div class="row"><span class="t"><a href="https://jump.rui.it/" target="_blank" rel="noopener">JUMP — Fondazione RUI <span class="lnk">↗</span></a> <small>Soft skills &amp; interdisciplinary training</small></span><span class="v">2023–26</span></div>
+
+      <figure class="jump-photo">
+        <a href="jump-ceremony.webp" target="_blank" rel="noopener" aria-label="View the JUMP completion ceremony photo at full size">
+          <img src="jump-ceremony-thumb.webp" width="680" height="453" loading="lazy" decoding="async" alt="Marco at the JUMP completion ceremony with two presenters at Politecnico di Milano">
+        </a>
+        <figcaption><span class="postcard-title">JUMP completion ceremony · 07/11/26</span><span class="postcard-note postcard-person"><span class="caption-symbol">&amp;</span> Giuseppe Ghini, President <span class="caption-symbol">@</span> RUI Foundation</span><span class="postcard-note postcard-person"><span class="caption-symbol">&amp;</span> Donatella Sciuto, Rector <span class="caption-symbol">@</span> Politecnico di Milano</span></figcaption>
+      </figure>
     </div>
 
+    <div class="background-right">
     <div class="lang">
       <div class="head"><span class="num">05</span><span class="lbl">Languages</span></div>
       <div class="row lr"><span class="t">Italian</span><span class="v">Native</span></div>
       <div class="row lr"><span class="t">English</span><span class="v english-credentials">{Cambridge C1 Advanced (2022) · IELTS Academic 7.5 (2026)}</span></div>
     </div>
+
+
 
     <div class="tick-wrap">
       <div class="head"><span class="num">06</span><span class="lbl">Competitions</span></div>
@@ -580,6 +782,7 @@
         <div class="tick"><span class="name">REPLY Student Tech Clash</span><span class="right"><span class="event-place">Rome, Italy</span><span class="yr">November 2023 / 24 / 25</span></span></div>
       </div>
 
+    </div>
     </div>
 
   </section>
